@@ -1,0 +1,78 @@
+const app = getApp();
+Page({
+  data: {
+    add:null,
+    sub:null,
+    mul:null,
+    div:null,
+    num1:null,
+    num2:null,
+    op:'',
+    result:null,
+    stdresult:null,
+    timu:null,
+    dui:0,
+    cuo:0
+  },
+  onLoad:function(e){
+    var ops=['+','-','*','÷']
+    var fop
+    this.setData({
+      add:app.globalData.add,
+      sub:app.globalData.sub,
+      mul:app.globalData.mul,
+      div:app.globalData.div,
+      num1:Math.floor(Math.random()*20),
+      num2:Math.floor(Math.random()*20)+1,
+      page:app.globalData.page,
+      result:app.globalData.result,
+      stdresult:app.globalData.stdresult,
+      timu:app.globalData.timu
+    })
+    app.globalData.page++
+    if(app.globalData.add==0){
+      ops[0]=null
+      console.log("不含加法")
+    }
+    if(app.globalData.sub==0){
+      ops[1]=null
+      console.log("不含减法")
+    }
+    if(app.globalData.mul==0){
+      ops[2]=null
+      console.log("不含乘法")
+    }
+    if(app.globalData.div==0){
+      ops[3]=null
+      console.log("不含除法")
+    }
+    var i=Math.floor(Math.random()*3)
+    fop=ops[i]
+    while(fop==null)
+    {
+     fop=ops[(i++)%4]
+    }
+    this.setData({
+      op:fop
+    })
+    var ins
+    for(ins=0;ins<app.globalData.tinum;ins++){//对错统计
+      if(this.data.result[ins]==this.data.stdresult[ins])
+      {
+      this.setData({
+        dui:this.data.dui+1
+      })
+    }
+      else
+      {this.setData({
+        cuo:this.data.cuo+1
+      })
+      }
+    } 
+  },
+ back:function(){
+   wx.navigateBack({
+      delta:1
+    })
+  }
+})

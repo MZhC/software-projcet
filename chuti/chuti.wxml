@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view>
+  <checkbox-group  bindchange="checkboxChange">
+    <label wx:for="{{items}}">
+      <checkbox value="{{item.name}}"checked="{{item.checked}}"/>{{item.value}}
+   </label>
+  </checkbox-group>
+</view>
+<view>
+  题目数量
+  <slider bindchange="numberChange" max="10" min="1" show-value/>
+</view>
+<view>
+  难度
+  <slider bindchange="easyChange" max="3" min="1" show-value/>
+</view>
+<view>
+<label>
+  <switch  checked="true" bindchange="testChange">练习模式开启/关闭</switch>
+  </label>
+</view>
+<view>
+  <view bindtap="startInter">点击开始考试</view>
+  ⏲
+  <text class='marright'>{{minute}}:{{second}}</text>
+</view>
+<view bindtap="timu">
+  生成题目
+</view>

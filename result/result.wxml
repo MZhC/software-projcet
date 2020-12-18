@@ -1,0 +1,13 @@
+<!--pages/result/result.wxml-->
+<view wx:for="{{timu}}">
+  第{{index+1}}题:{{item}}
+</view>
+<view wx:for="{{result}}">
+  第{{index+1}}题你的答案是:{{item}}
+</view>
+<view wx:for="{{stdresult}}">
+  第{{index+1}}题标准答案是:{{item}}
+</view>
+<view>你做对了{{dui}}题</view>
+<view>你做错了{{cuo}}题</view>
+<view bindtap="back">返回首页</view>

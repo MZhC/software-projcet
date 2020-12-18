@@ -1,0 +1,71 @@
+<view>
+  出题范围：
+  <view wx:if="{{add==1}}">加法</view>
+  <view wx:if="{{sub==1}}">减法</view>
+  <view wx:if="{{mul==1}}">乘法</view>
+  <view wx:if="{{div==1}}">除法</view>
+</view>
+
+<view>
+  第{{page}}题
+  <view wx:if="{{op=='+'}}">
+    {{num1}}{{op}}{{num2}}
+    你的答案：<input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{num1+num2}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+  </view>
+  <view wx:if="{{op=='-'}}">
+    <view wx:if="{{num1-num2>=0}}">
+    {{num1}}{{op}}{{num2}}
+    <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{num1-num2}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+    </view>
+    <view wx:else>
+      {{num2}}{{op}}{{num1}}
+      <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+      答案：<view wx:if="{{mode==1}}">{{num2-num1}}</view>
+      <view wx:else>考试模式下禁止查看答案</view>
+    </view>
+  </view>
+  <view wx:if="{{op=='*'}}">
+    {{num1}}{{op}}{{num2}}
+    <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{num1*num2}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+  </view>
+  <view wx:if="{{op=='÷'}}">
+    <view wx:if="{{num1>=num2}}">
+    <view wx:if="{{num1%num2==0}}">
+    {{num1}}{{op}}{{num2}}
+    <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{num1/num2}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+    </view>
+    <view wx:else>
+      {{num1-(num1%num2)}}{{op}}{{num2}}
+      <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{(num1-(num1%num2))/num2}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+    </view>
+  </view>
+  <view wx:else>
+    <view wx:if="{{num2%num1==0}}">
+    {{num2}}{{op}}{{num1}}
+    <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{num2/num1}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+    </view>
+    <view wx:else>
+      {{num2-(num2%num1)}}{{op}}{{num1}}
+      <input type="number" maxlength="5" bindinput="getInput" placeholder="请输入答案"/>
+    答案：<view wx:if="{{mode==1}}">{{(num2-(num2%num1))/num1}}</view>
+    <view wx:else>考试模式下禁止查看答案</view>
+    </view>
+  </view>
+  </view>
+  <view bindtap="nextpage">
+  下一题
+</view>
+
+</view>
